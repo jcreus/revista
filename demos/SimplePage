@@ -1,0 +1,23 @@
+<page>
+<text>
+<fontsize>20</fontsize>
+<fontfamily>Arial</fontfamily>
+<fontweight>bold</fontweight>
+<textalign>center</textalign>
+<contents><!! {title}!!></contents>
+</text>
+<text>
+<fontsize>13</fontsize>
+<fontfamily>Ubuntu</fontfamily>
+<fontweight>normal</fontweight>
+<textalign>center</textalign>
+<contents><!! {subtitle} !!></contents>
+</text>
+<text><contents></contents></text>
+<text>
+<fontsize>13</fontsize>
+<fontfamily>Ubuntu</fontfamily>
+<fontweight>normal</fontweight>
+<contents><!! {contents} !!></contents>
+</text>
+</page>

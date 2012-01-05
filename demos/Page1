@@ -1,0 +1,12 @@
+<file>
+<template>demos/SimplePage</template>
+<title>Title of the document</title>
+<subtitle>This is the subtitle</subtitle>
+<contents>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sit amet nisi at orci laoreet aliquet. Duis at nunc velit. Pellentesque dolor lorem, sagittis sit amet pharetra a, iaculis et quam. Etiam sed elit purus. Maecenas id lorem sed quam ullamcorper mattis. In hac habitasse platea dictumst. Vivamus vulputate convallis elit mollis sodales. Nam tincidunt ipsum a dolor mattis adipiscing. Integer ut feugiat turpis. Morbi iaculis rhoncus felis id sollicitudin.
+
+Etiam nisi enim, tempus id porttitor in, facilisis nec lacus. Integer accumsan imperdiet turpis vitae congue. Curabitur blandit molestie enim, eget pulvinar tortor lacinia ultrices. Cras egestas ultrices elit, ac rutrum augue ullamcorper eget. Integer quis justo et felis porta commodo sit amet nec quam. Sed cursus vestibulum diam id cursus. Quisque viverra malesuada felis ut lacinia. Proin pharetra aliquam diam, eu bibendum ipsum vehicula vel. Suspendisse potenti. Ut nec aliquet nibh. Mauris vitae orci arcu. Curabitur arcu purus, pulvinar a aliquam sed, ultricies eu magna. Aliquam erat volutpat. Phasellus vel tortor non libero egestas feugiat. Etiam pellentesque massa augue, id tincidunt nisl. Quisque eu elit ut augue aliquam luctus sed vitae lectus.
+
+Nulla fringilla, risus non sollicitudin aliquet, tortor enim placerat mi, ac faucibus urna enim nec nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut sit amet ante ligula, id facilisis nulla. Sed elit ligula, ultrices quis egestas ut, posuere nec quam. Sed commodo magna sed libero posuere vel auctor urna mollis. Curabitur eleifend facilisis dapibus. Suspendisse aliquam est eget libero laoreet in ultricies urna mollis.
+</contents>
+</file>
