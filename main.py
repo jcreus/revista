@@ -13,9 +13,17 @@ filelist = sys.argv[1:]
 def main(args):
     CREATE_INDIVIDUAL = False
     files = []
+
+    if len(args) == 0:
+       print "No input arguments. Use -h or --help for more info."
+       exit()
+
     for argument in args:
         if argument in ["-h","--help"]:
-           print "Iepaa! Fote't i mira el codi"
+           print "Magazine creator assistant:"
+           print "Two ways"
+           print " 1) python args.py [input files] [destination file] --> all input files are joined into one destination file."
+           print " 2) python args.py --nojoin [input files] --> each input file is saved as odt as {input_file}.odt"
            exit()
         elif argument in ["-n","--nojoin"]:
            CREATE_INDIVIDUAL = True
