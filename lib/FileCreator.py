@@ -21,8 +21,7 @@ class Doc:
           self.styles = []
 
 class FileCreator:
-      def __init__(self, fname, xml):
-          self.file = fname
+      def __init__(self, xml):
           self.xml = xml
           self.handlers = {"text": self._text, "image": self._image}
           self.styles = {}
@@ -35,7 +34,6 @@ class FileCreator:
           self.doc.styles.append(s)
           paragraphs = inner(elm.find("contents")).split("\n\n")
           for c in paragraphs:
-             print c
              p = P(text=c,stylename=s)
              self.doc.text.append(p)
              if len(paragraphs) > 1:

@@ -21,7 +21,7 @@ def main(files):
         defs = FileParser(f).parse()
         ta = TemplateApplier(defs["TEMPLATE"],defs)
         xml = ta.get()
-        obj = FileCreator(f+".odt",xml).get()
+        obj = FileCreator(xml).get()
         obj.text = obj.text
         if CREATE_INDIVIDUAL:
            doc = OpenDocumentText()
@@ -34,7 +34,6 @@ def main(files):
            for style in obj.styles:
                glob.styles.addElement(style)
            for t in obj.text:
-               print t.tagName
                glob.text.addElement(t)
     if not CREATE_INDIVIDUAL:
        glob.save(dest)
