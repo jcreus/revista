@@ -9,19 +9,36 @@ from odfpy.odf.opendocument import OpenDocumentText
 
 filelist = sys.argv[1:]
 
-CREATE_INDIVIDUAL = False#True#False
 
-def main(files):
+def main(args):
+    CREATE_INDIVIDUAL = False
+    files = []
+    for argument in args:
+        if argument in ["-h","--help"]:
+           print "Iepaa! Fote't i mira el codi"
+           exit()
+        elif argument in ["-n","--nojoin"]:
+           CREATE_INDIVIDUAL = True
+        else:
+           files.append(argument)
+
     if not CREATE_INDIVIDUAL:
        glob = OpenDocumentText()
        dest = files[-1]
        files = files[:-1]
+       if files == []:
+          print "ERROR: NO INPUT FILES. EXITING..."
+          exit()
 
+    c = 0
     for f in files:
         defs = FileParser(f).parse()
         ta = TemplateApplier(defs["TEMPLATE"],defs)
         xml = ta.get()
-        obj = FileCreator(xml).get()
+        addit = False
+        if not CREATE_INDIVIDUAL and not c == len(files)-1:
+           addit = True
+        obj = FileCreator(xml, addit).get()
         obj.text = obj.text
         if CREATE_INDIVIDUAL:
            doc = OpenDocumentText()
@@ -35,6 +52,7 @@ def main(files):
                glob.styles.addElement(style)
            for t in obj.text:
                glob.text.addElement(t)
+        c += 1
     if not CREATE_INDIVIDUAL:
        glob.save(dest)
 

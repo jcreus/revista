@@ -21,8 +21,9 @@ class Doc:
           self.styles = []
 
 class FileCreator:
-      def __init__(self, xml):
+      def __init__(self, xml, addlinebreak):
           self.xml = xml
+          self.addlinebreak = addlinebreak
           self.handlers = {"text": self._text, "image": self._image}
           self.styles = {}
 
@@ -51,9 +52,10 @@ class FileCreator:
           b = BeautifulSoup(self.xml)
           for elm in b.page.findAll(["text","image"]):
               self.handlers[elm.name](elm)
-          s2 = Style(name="linebreak",family="paragraph")
-          s2.addElement(ParagraphProperties(textalign=attr("textalign",elm),breakbefore="page"))
-          self.doc.styles.append(s2)
-          self.doc.text.append(P(stylename=s2))
+          if self.addlinebreak:
+             s2 = Style(name="linebreak",family="paragraph")
+             s2.addElement(ParagraphProperties(textalign=attr("textalign",elm),breakbefore="page"))
+             self.doc.styles.append(s2)
+             self.doc.text.append(P(stylename=s2))
 
           return self.doc
