@@ -24,5 +24,4 @@ class FileParser:
            tag = elm.name
            if tag != "template":
               defs[tag] = inner(elm)
-    print defs
     return defs

@@ -3,7 +3,7 @@
 from BeautifulSoup import BeautifulSoup
 
 from odfpy.odf.opendocument import OpenDocumentText
-from odfpy.odf.text import P
+from odfpy.odf.text import P,SoftPageBreak
 from odfpy.odf.style import Style, ParagraphProperties, TextProperties
 from random import choice
 
@@ -14,6 +14,11 @@ defaults = {"textalign":"justify","fontweight":"normal","fontsize":"12","fontfam
 def attr(y,elm):
     try: return inner(elm.find(y))
     except: return defaults[y]
+
+class Doc:
+      def __init__(self):
+          self.text = []
+          self.styles = []
 
 class FileCreator:
       def __init__(self, fname, xml):
@@ -27,16 +32,15 @@ class FileCreator:
           s.addElement(TextProperties(fontsize='%spt'%attr("fontsize",elm)))
           s.addElement(TextProperties(fontweight=attr("fontweight",elm)))
           s.addElement(TextProperties(fontfamily=attr("fontfamily",elm)))
-          s.addElement(ParagraphProperties(textalign=attr("textalign",elm)))
-          self.doc.styles.addElement(s)
+          self.doc.styles.append(s)
           paragraphs = inner(elm.find("contents")).split("\n\n")
           for c in paragraphs:
              print c
              p = P(text=c,stylename=s)
-             self.doc.text.addElement(p)
+             self.doc.text.append(p)
              if len(paragraphs) > 1:
                p = P(text="",stylename=s)
-               self.doc.text.addElement(p)
+               self.doc.text.append(p)
 
       def _image(self, elm):
           pass
@@ -44,10 +48,14 @@ class FileCreator:
       def _setStyles(self):
           pass
 
-      def save(self):
-          self.doc = OpenDocumentText()
-          self._setStyles()
+      def get(self):
+          self.doc = Doc()
           b = BeautifulSoup(self.xml)
           for elm in b.page.findAll(["text","image"]):
               self.handlers[elm.name](elm)
-          self.doc.save(self.file)
+          s2 = Style(name="linebreak",family="paragraph")
+          s2.addElement(ParagraphProperties(textalign=attr("textalign",elm),breakbefore="page"))
+          self.doc.styles.append(s2)
+          self.doc.text.append(P(stylename=s2))
+
+          return self.doc
